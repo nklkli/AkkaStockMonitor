@@ -6,7 +6,7 @@ As use case it realises an stock market monitoring scenario.
 
 The code is a slightly modified and updated version from the Pluralsight course [Building Reactive Concurrent WPF Applications with Akka.NET](https://www.pluralsight.com/courses/akka-dotnet-building-reactive-concurrent-wpf-applications).
 
-The chart shows (fake) real-time prices of stocks:
+The chart shows simulated real-time prices of (fake) stocks:
 
 ![](MainWindow.png)
 
@@ -53,11 +53,11 @@ For brevity all suffixes in this diagram are omitted.
 
 ```mermaid
 graph TD
-    G{{MainWindow.xaml.cs}} --- B[[Button]]
-    G --- C[StockCoordinator]
-    C --- S[[Stock]]
-    S --- P[[StockPriceLookup]]
-    G --- L[LineCharting]
+    G{{MainWindow.xaml.cs}} --> B[[Button]]
+    G --> C[StockCoordinator]
+    C --> S[[Stock]]
+    S --> P[[StockPriceLookup]]
+    G --> L[LineCharting]
     G -. FlipToggle .-> B        
     B -. Watch/UnWatch-Stock .-> C
     C -. Add/Remove-ChartSeries .-> L
