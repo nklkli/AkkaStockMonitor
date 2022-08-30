@@ -10,6 +10,7 @@ The chart shows simulated real-time prices of (fake) stocks:
 
 ![](MainWindow.png)
 
+There are 5 actor C# classes in the Visual Studio project. 
 
 ## ActorSystem-UI Bridge
 The actors `ButtonActor` and `LineChartingActor` play the
@@ -48,8 +49,13 @@ To create an actor with dependencies use
 
 
 ## Actor instantiation(solid lines) and flow of messages(dotted lines) between actors.
-All actor classes in code are suffixed with `...Actor`. 
-For brevity all suffixes in this diagram are omitted.
+- All actor classes in code are suffixed with `...Actor`. For brevity all suffixes in this diagram are omitted.
+- MainWindow(WPF control, not an actor) creates 3 `Button` actors.
+- Each `Button` actor updates WPF button text.
+- StockCoodinator actor create one Stock actor per stock symbol.
+- Stock actor creates one child - `StockPriceLookup`.
+- `Stock` actor publishes new stock prices to `LineCharting` actor.
+- `LineCharting` interacts with WPF controls to display prices in a chart.
 
 ```mermaid
 graph TD
